@@ -19,12 +19,14 @@ The game seems basic and straight forward but on a user's perspective there is s
 2. [x] The player, should have an outline or pointer as to what 
    column/row their piece will go into once click on an
    empty space.
-3. [ ] The player should have a piece drop into an empty space once 
+3. [x] The player should have a piece drop into an empty space once 
    they click on the top row.
-4. [ ] The player will want a score board to indicate the score 
+4. [ ] When a column is full and the player clicks to drop a piece 
+   into it, it alerts the user that the row is full.
+5. [ ] The player will want a score board to indicate the score 
    with whom they are playing against.
-5. [ ] Player should know clear instructions and rules on how 
+6. [ ] Player should know clear instructions and rules on how 
    game is played and how game is won.
-6. [ ] Player should be notified of win or loss.
+7. [ ] Player should be notified of win or loss.
 
 ![Framework of Kinect4!](https://i.imgur.com/tdp1uJw.png)

@@ -29,6 +29,18 @@ span {
 	background-color: #FF781D;
 }
 
+.p1.box.owner {
+	background-color: #1DF2FF;
+}
+
+.p2.box.owner {
+	background-color: #FF781D;
+}
+
+.drop {
+	cursor: pointer;
+}
+
 tr {
 	padding-top: 20px;
 	margin: 0 auto;
