@@ -1,12 +1,9 @@
-===================
-
-#Welcome to Gev's first project for the WDI DTLA 6!
+# Welcome to Gev's first project for the WDI DTLA 6!
 
 
-## This project will be the classic board game connect 4!
+## This project will be the classic board game Connect 4!
 
 
-----------------------
 ### Rules and Objective of the Game
 
 Connect 4 is a two player game, played on a board with a 7 column by 6 row grid. each player takes turns and places their "discs" or pieces in the available slots on the game board. the objective of the game is for a player to connect 4 of their pieces together diagnolly, horizontally, or vertically.
@@ -22,8 +19,12 @@ The game seems basic and straight forward but on a user's perspective there is s
 2. [x] The player, should have an outline or pointer as to what 
    column/row their piece will go into once click on an
    empty space.
-3. [ ] The player will want a score board to indicate the score 
+3. [ ] The player should have a piece drop into an empty space once 
+   they click on the top row.
+4. [ ] The player will want a score board to indicate the score 
    with whom they are playing against.
-4. [ ] Player should know clear instructions and rules on how 
+5. [ ] Player should know clear instructions and rules on how 
    game is played and how game is won.
-5. [ ] Player should be notified of win or loss.
+6. [ ] Player should be notified of win or loss.
+
+![Framework of Kinect4!](https://i.imgur.com/tdp1uJw.png)
