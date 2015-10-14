@@ -6,13 +6,13 @@ var	players    = 0;
 var latestTurn;
 var playerTurn = 1;
 var board      = {
-	column1: [null, null, null, null, null, null],
-	column2: [null, null, null, null, null, null],
-	column3: [null, null, null, null, null, null],
-	column4: [null, null, null, null, null, null],
-	column5: [null, null, null, null, null, null],
-	column6: [null, null, null, null, null, null],
-	column7: [null, null, null, null, null, null]
+	column1: [null, null, null, null, null, null,null],
+	column2: [null, null, null, null, null, null,null],
+	column3: [null, null, null, null, null, null,null],
+	column4: [null, null, null, null, null, null,null],
+	column5: [null, null, null, null, null, null,null],
+	column6: [null, null, null, null, null, null,null],
+	column7: [null, null, null, null, null, null,null]
 };
 var scoreP1    = 0;
 var scoreP2    = 0;
@@ -20,50 +20,60 @@ var scoreP2    = 0;
 var blue   = {'backgroundColor':'rgb(29,242,255)','color':'rgb(29,242,255)'}
 var orange = {'backgroundColor': "#FF781D"}
 
-// var getColumnDown = function () {	
-// 	//parseInt(latestTurn[0][latestTurn[0].length-1])
-// 	var changeY = latestTurn[0];
-// 	var checkDown = board[latestTurn[0]][latestTurn[1]];
-// 		for(var i = latestTurn[1] + 1, j = 0; j < 3; i--, j++){
-// 			if (board[latestTurn[0]][changeY + 1] === null) checkDown += "__";
-// 			checkDown += board[latestTurn[0]][i+1]
-// 		}
-// 	return checkDown;
-// }
 
 
 
 	//CHECK FOR COLUMN WIN!
 
-	function winColumn () {
-	
-	for(var i = 0; i <= 4; i++){
-	if(board.column1[i] === 'p1' && board.column1[i] != 'p2'){
-		alert("P1 WINS!")
-	}
 
-	}
+	function winClm () {
+	var currentColumn = board.column1;
+	var pieceCounter = 0;	 
+	
+	for(var i = 0; i <= board.column1.length; i++){
+		if(board.column1[i] === 'p1'){
+			pieceCounter +=1;
+			console.log(pieceCounter,board.column1[i],i);
+		}
+			else {
+				pieceCounter = 0;
+				console.log(pieceCounter);
+
+			}
+
+		if (pieceCounter === 4) {
+			scoreP1++;
+			return true;
+		}
+	} 
 }
 
 
-	//  var checkColumn = function() {
-	//  // 	for (i = 0; i < board.column1.length - 1; i++){
+// 	function winColumn () {
+// 	var pieceCounter = 0;
+// 	for(var i = 0; i <= board.column1.length ; i++){
+// 		for(var j = 0; j < 4; j++){
+// 			if(board.column1[[i]+1] === 'p1'){
+// 				alert("P1 WINS!") 
+// 			}
+// 		}
+// 	}
+// }
+// winColumn();
 
-	// 	// 	if(board.column1[6] === 'p1' || board.column1[6] === 'p2'){
-	// 	// 		i++;
-	// 	// 	}
-	// 	// 	else{
-	// 	// 		i = 	0;
-	// 	// 	}
-	// 	// 	if(board.column1[6] === board.column1[5]){
-	// 	// 		i++;
-	// 	// 	}
-	// 	// 	if(board.column1[5] === board.column1[4]){
-	// 	// 		i++;
-	// 	// 	}
-	// 	// }
+
+
+//  var getColumnDown = function () {
+// // //parseInt(latestTurn[0][latestTurn[0].length-1])
+// var changeY = latestTurn[0];
+// var checkDown = board[latestTurn[0]][latestTurn[1]];
+// 	for(var i = latestTurn[1] + 1, j = 0; j < 3; i--, j++){
+// 		if (board[latestTurn[0]][changeY + 1] === null) checkDown += "__";
+//  			checkDown += board[latestTurn[0]][i+1]
+//  }
+// return checkDown;
+//  } //
 	
- // }
 
 /* ENSURE DOM LOADED */
 $(document).ready(function() {
@@ -105,69 +115,6 @@ $(document).ready(function() {
 	playerTwo = 'Veg';
 	 }
 	///////////////
-
-
-	
-
-
-
-
-
-// 	for (i = 0; i < board.column1.length -1; i++){
-
-	// 		if(i===0){
-	// 			if(board.column1[6] === 'p1' || board.column1[6] === 'p2'){
-	// 				i++;
-	// 			}
-	// 		}else {
-	// 				if(board.column1[i] === board.column1[i-1])
-	// 			i++
-	// 		}
-	// 			if (board.column1[i] === 'p1' ||  board.column1[i] === 'p2')
-	// 				i = 1;
-	// 		}{
-	// 			i = 0;
-	// 		}
-	// 		if (i >=4){
-	// 			alert("winner");
-	// 		}
-		/*
-		for (i=0; i< column.length-1; i++)
-		{
-			if (i===0)
-			{
-				if column1[0] === filled
-					counter++
-			}
-			else
-			{
-				if column1[i] === column1[i-1])
-					counter++
-				else
-					if column1[i] ==== filled
-						counter = 1;
-					else
-						counter = 0
-			}
-			if counter >=4 
-				winner!
-			else
-				no winner
-		}
-		*/
-
-
-		// if(board.column1[6] === "p1" &&	board.column1[5] ==='p1' && board.column1[4] ==='p1' && board.column1[3] === 'p1'){
-		// 	alert("p1 wins!")  
-		// }
-
-		//if(board.column1.filter(function(value){
-		// 	return value === "p1"}
-		// 	.length === 4)
-		// 	alert("cool!")
-		// }
-
-		 
 
 
 
