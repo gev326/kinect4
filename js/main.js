@@ -3,20 +3,67 @@ var development = true; // in development mode!
 /* MODEL */
 
 var	players    = 0;
+var latestTurn;
 var playerTurn = 1;
 var board      = {
-	column1: [null, null, null, null, null, null, null],
-	column2: [null, null, null, null, null, null, null],
-	column3: [null, null, null, null, null, null, null],
-	column4: [null, null, null, null, null, null, null],
-	column5: [null, null, null, null, null, null, null],
-	column6: [null, null, null, null, null, null, null],
-	column7: [null, null, null, null, null, null, null]
+	column1: [null, null, null, null, null, null],
+	column2: [null, null, null, null, null, null],
+	column3: [null, null, null, null, null, null],
+	column4: [null, null, null, null, null, null],
+	column5: [null, null, null, null, null, null],
+	column6: [null, null, null, null, null, null],
+	column7: [null, null, null, null, null, null]
 };
+var scoreP1    = 0;
+var scoreP2    = 0;
 
 var blue   = {'backgroundColor':'rgb(29,242,255)','color':'rgb(29,242,255)'}
 var orange = {'backgroundColor': "#FF781D"}
 
+// var getColumnDown = function () {	
+// 	//parseInt(latestTurn[0][latestTurn[0].length-1])
+// 	var changeY = latestTurn[0];
+// 	var checkDown = board[latestTurn[0]][latestTurn[1]];
+// 		for(var i = latestTurn[1] + 1, j = 0; j < 3; i--, j++){
+// 			if (board[latestTurn[0]][changeY + 1] === null) checkDown += "__";
+// 			checkDown += board[latestTurn[0]][i+1]
+// 		}
+// 	return checkDown;
+// }
+
+
+
+	//CHECK FOR COLUMN WIN!
+
+	function winColumn () {
+	
+	for(var i = 0; i <= 4; i++){
+	if(board.column1.index === 'p1' && board.column1[i] != 'p2'){
+		alert("P1 WINS!")
+	}
+
+	}
+}
+
+
+	//  var checkColumn = function() {
+	//  // 	for (i = 0; i < board.column1.length - 1; i++){
+
+	// 	// 	if(board.column1[6] === 'p1' || board.column1[6] === 'p2'){
+	// 	// 		i++;
+	// 	// 	}
+	// 	// 	else{
+	// 	// 		i = 	0;
+	// 	// 	}
+	// 	// 	if(board.column1[6] === board.column1[5]){
+	// 	// 		i++;
+	// 	// 	}
+	// 	// 	if(board.column1[5] === board.column1[4]){
+	// 	// 		i++;
+	// 	// 	}
+	// 	// }
+	
+ // }
 
 /* ENSURE DOM LOADED */
 $(document).ready(function() {
@@ -25,9 +72,10 @@ $(document).ready(function() {
 	$columns    = $('#hover-row');
 	$droppableBoxes = $('.drop');
 	
+	/* SET UP GAME */
 	//var board = document.getElementById('board');
 	if (!development) {
-		var playerOne = console.log("Welcome to Kinect4! \nPlayer 1, Please enter your name:");
+		var playerOne = prompt("Welcome to Kinect4! \nPlayer 1, Please enter your name:");
 
 		if (playerOne !=null) {
 			playerOne === playerOne;
@@ -35,7 +83,7 @@ $(document).ready(function() {
 			players++;
 		}
 
-		var playerTwo =	console.log("Welcome to Kinect4! \nPlayer 2, Please enter your name:");
+		var playerTwo =	prompt("Welcome to Kinect4! \nPlayer 2, Please enter your name:");
 			
 		if (playerTwo !=null) {
 		    playerTwo === playerTwo
@@ -46,16 +94,83 @@ $(document).ready(function() {
 		var player2_Box = document.getElementById('player2');
 
 		var $player1_Box = $(player1_Box);
-			$player1_Box.html(playerOne).css({'text-align': 'center', 'font-weight': 'bold','font-size': '30px'});
+			$player1_Box.html(playerOne + "\nScore: " + scoreP1).css({'text-align': 'center', 'font-weight': 'bold','font-size': '30px'});
+			
 
 
 		var $player2_Box = $(player2_Box);
-			$player2_Box.html(playerTwo).css({'text-align': 'center', 'font-weight': 'bold','font-size': '30px'});
+			$player2_Box.html(playerTwo + "\nScore: " + scoreP2).css({'text-align': 'center', 'font-weight': 'bold','font-size': '30px'});
 	} else {
-		playerOne = 'Gev';
-		playerTwo = 'Veg';
-	}
+	playerOne = 'Gev';
+	playerTwo = 'Veg';
+	 }
 	///////////////
+
+
+	
+
+
+
+
+
+// 	for (i = 0; i < board.column1.length -1; i++){
+
+	// 		if(i===0){
+	// 			if(board.column1[6] === 'p1' || board.column1[6] === 'p2'){
+	// 				i++;
+	// 			}
+	// 		}else {
+	// 				if(board.column1[i] === board.column1[i-1])
+	// 			i++
+	// 		}
+	// 			if (board.column1[i] === 'p1' ||  board.column1[i] === 'p2')
+	// 				i = 1;
+	// 		}{
+	// 			i = 0;
+	// 		}
+	// 		if (i >=4){
+	// 			alert("winner");
+	// 		}
+		/*
+		for (i=0; i< column.length-1; i++)
+		{
+			if (i===0)
+			{
+				if column1[0] === filled
+					counter++
+			}
+			else
+			{
+				if column1[i] === column1[i-1])
+					counter++
+				else
+					if column1[i] ==== filled
+						counter = 1;
+					else
+						counter = 0
+			}
+			if counter >=4 
+				winner!
+			else
+				no winner
+		}
+		*/
+
+
+		// if(board.column1[6] === "p1" &&	board.column1[5] ==='p1' && board.column1[4] ==='p1' && board.column1[3] === 'p1'){
+		// 	alert("p1 wins!")  
+		// }
+
+		//if(board.column1.filter(function(value){
+		// 	return value === "p1"}
+		// 	.length === 4)
+		// 	alert("cool!")
+		// }
+
+		 
+
+
+
 
 
 	/* ADD EVENT LISTENERS */
@@ -73,14 +188,17 @@ $(document).ready(function() {
 		// x get the column to drop in
 		// x find the last free spot in the column
 		// put that player's piece in that spot
-
 		var dropColumn  = event.target.id;
 		var modelColumn = board[dropColumn];
+
 		var freeSpot = 6;
 
-		for (var i = 0; i < modelColumn.length; i++) {
+
+		for (var i = 0; i < modelColumn.length ; i++) {
 			if (modelColumn[i] !== null) {
 				freeSpot = i - 1;
+				//latestTurn = [dropColumn,freeSpot];
+				//console.log(latestTurn);
 			    break;
 			}
 		};
@@ -88,8 +206,9 @@ $(document).ready(function() {
 		console.log(freeSpot);
 
 		// check if column is full
-		if (freeSpot === -1) {
+		if (freeSpot === 0) {
 			// TODO: DO SOMETHING!
+			alert("column is full!")
 		} else {
 			modelColumn[freeSpot] = "p" + playerTurn;
 		}
@@ -102,8 +221,43 @@ $(document).ready(function() {
 		}
 
 		// re-render!
+
 		render();
+		// checkColumn();
 	});
+
+
+
+
+// 		function check_winner(player) { 
+//   if (board_check[0] === "X" && board_check[1] === "X" && board_check[2] === "X" ||
+//       board_check[3] === "X" && board_check[4] === "X" && board_check[5] === "X" ||
+//       board_check[6] === "X" && board_check[7] === "X" && board_check[8] === "X" ||
+//       board_check[1] === "X" && board_check[4] === "X" && board_check[7] === "X" ||
+//       board_check[2] === "X" && board_check[5] === "X" && board_check[8] === "X" ||
+//       board_check[2] === "X" && board_check[4] === "X" && board_check[6] === "X" ||
+//       board_check[0] === "X" && board_check[4] === "X" && board_check[8] === "X" ||
+//       board_check[0] === "X" && board_check[3] === "X" && board_check[6] === "X") {
+
+//   	alert("X wins!");
+//     resetboard();
+//   }
+
+//   if (board_check[0] === "O" && board_check[1] === "O" && board_check[2] === "O" ||
+//       board_check[3] === "O" && board_check[4] === "O" && board_check[5] === "O" ||
+//       board_check[6] === "O" && board_check[7] === "O" && board_check[8] === "O" ||
+//       board_check[1] === "O" && board_check[4] === "O" && board_check[7] === "O" ||
+//       board_check[2] === "O" && board_check[5] === "O" && board_check[8] === "O" ||
+//       board_check[2] === "O" && board_check[4] === "O" && board_check[6] === "O" ||
+//       board_check[0] === "O" && board_check[4] === "O" && board_check[8] === "O" ||
+//       board_check[0] === "O" && board_check[3] === "O" && board_check[6] === "O") {
+
+//     alert("O wins!");
+//     resetboard();
+//   }
+// }
+
+
 
 	// var hover_piece = document.getElementById('hover_row');
 	// var $hover_piece = $(hover_piece);
@@ -180,5 +334,8 @@ $(document).ready(function() {
 	/* NOW INITIALIZE THE PAGE */
 	render();
 });
+
+
+	
 
 
