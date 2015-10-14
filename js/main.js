@@ -29,15 +29,18 @@ var orange = {'backgroundColor': "#FF781D"}
 	function winClm () {
 	var currentColumn = board.column1;
 	var pieceCounter = 0;	 
-	
-	for(var i = 0; i <= board.column1.length; i++){
-		if(board.column1[i] === 'p1'){
+	//for (var j=0; j<6; j++)
+for (var j=0; j<7;j++)
+{
+	for(var i = 0; i <= board.column1.length-1; i++){
+		if(board['column' + (j+1)][i] === 'p1'){
 			pieceCounter +=1;
 			console.log(pieceCounter,board.column1[i],i);
 		}
 			else {
 				pieceCounter = 0;
-				console.log(pieceCounter);
+				console.log(pieceCounter,board.column1[i],i);
+				
 
 			}
 
@@ -46,6 +49,9 @@ var orange = {'backgroundColor': "#FF781D"}
 			return true;
 		}
 	} 
+}
+return false;
+
 }
 
 
