@@ -38,7 +38,7 @@ var orange = {'backgroundColor': "#FF781D"}
 	function winColumn () {
 	
 	for(var i = 0; i <= 4; i++){
-	if(board.column1.index === 'p1' && board.column1[i] != 'p2'){
+	if(board.column1[i] === 'p1' && board.column1[i] != 'p2'){
 		alert("P1 WINS!")
 	}
 
