@@ -29,4 +29,8 @@ The game seems basic and straight forward but on a user's perspective there is s
    game is played and how game is won.
 7. [ ] Player should be notified of win or loss.
 
+### ICEBOX
+
+1. [] Player, should be able to win Diagonally
+
 ![Framework of Kinect4!](https://i.imgur.com/tdp1uJw.png)

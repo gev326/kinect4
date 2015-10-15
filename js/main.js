@@ -31,7 +31,7 @@ function winClm (player) {
 	//for (var j=0; j<6; j++)
 	for (var j=0; j<= 6;j++)
 	{
-		for(var i = 0; i <= board.column1.length-1; i++){
+		for(var i = 0; i <= 6; i++){
 			if(board['column' + (j+1)][i] === player){
 			pieceCounter +=1;
 			//console.log(board.column[j],[i]);
@@ -44,6 +44,7 @@ function winClm (player) {
 			if (pieceCounter === 4) {
 			// MAKE SURE TO ADD SCORE BOARD! scoreP1++;
 			return true;
+			//
 			}
 		} 
 	}
@@ -59,7 +60,7 @@ function winRow (player) {
 
 			for (var i = 6; i > 0; i--){
 				for (var j=0; j <= 6;j++){
-			console.log([j]);
+			//console.log([j]);
 		if(board["column" + (j+1)][i] === player) 	{		
 			pieceCounterRow +=1;
 			}
@@ -71,6 +72,7 @@ function winRow (player) {
 			if (pieceCounterRow === 4) {
 			// MAKE SURE TO ADD SCORE BOARD! scoreP1++;
 			return true;
+			//alert("YOU WIN!")
 			}
 		} 
 	}
@@ -79,60 +81,58 @@ function winRow (player) {
 
 
 
-// function winClmPlayer2 () {
-// 	var pieceCounter_2 = 0;	 
-// 	//for (var j=0; j<6; j++)
-// for (var j=0; j<= 7;j++)
-// {
-// 	for(var i = 0; i <= board.column1.length-1; i++){
-// 		if(board['column' + (j+1)][i] === 'p2'){
-// 			pieceCounter_2 +=1;
-// 			//console.log(pieceCounter,board.column1[i],i);
-// 		}
-// 			else {
-// 				pieceCounter_2 = 0;
-// 				//console.log(pieceCounter,board.column1[i],i);
-				
 
-// 			}
+// function checkDiag (row,column) {
 
-// 		if (pieceCounter_2 === 4) {
-// 			scoreP2++;
-// 			return true;
-// 		}
-// 	} 
+// 	//var columnId = "column" + column;
+// 	console.log(board[column][row]);
+
+
+// 	parseInt(column[-1]) 
+
+// 	if([column+1][row-1] === 'p1' && [column+1])
+
 // }
-// return false;
-
-//}
 
 
 
-// 	function winColumn () {
-// 	var pieceCounter = 0;
-// 	for(var i = 0; i <= board.column1.length ; i++){
-// 		for(var j = 0; j < 4; j++){
-// 			if(board.column1[[i]+1] === 'p1'){
-// 				alert("P1 WINS!") 
-// 			}
+
+
+// for (columnIndex in board){
+	
+// 		for(var rowIndex = 6; rowIndex >= 0; rowIndex--){
+
+// 			checkDiag(rowIndex,columnIndex)
+
+		 
 // 		}
 // 	}
-// }
-// winColumn();
+// 			// return false;
 
 
 
-//  var getColumnDown = function () {
-// // //parseInt(latestTurn[0][latestTurn[0].length-1])
-// var changeY = latestTurn[0];
-// var checkDown = board[latestTurn[0]][latestTurn[1]];
-// 	for(var i = latestTurn[1] + 1, j = 0; j < 3; i--, j++){
-// 		if (board[latestTurn[0]][changeY + 1] === null) checkDown += "__";
-//  			checkDown += board[latestTurn[0]][i+1]
-//  }
-// return checkDown;
-//  } //
+function winDiagonal (player) {
+if(board.column1[1] === player && board.column2[2] === player && board.column3[3] === player && board.column4[4] === player ||  
+   board.column2[2] === player && board.column3[3] === player && board.column4[4] === player && board.column5[5] === player ||  
+   board.column3[3] === player && board.column4[4] === player && board.column5[5] === player && board.column6[6] === player ||
+
+   board.column1[2] === player && board.column2[3] === player && board.column3[4] === player && board.column4[5] === player 
+
+
+
+   )	{
+	console.log("hello")
+} 
+
 	
+
+}
+
+
+
+
+
+
 
 /* ENSURE DOM LOADED */
 $(document).ready(function() {
@@ -227,83 +227,13 @@ $(document).ready(function() {
 		}
 
 		// re-render!
-
+		//winClm();
+		//winRow();
 		render();
-		// checkColumn();
+		
 	});
 
 
-
-
-// 		function check_winner(player) { 
-//   if (board_check[0] === "X" && board_check[1] === "X" && board_check[2] === "X" ||
-//       board_check[3] === "X" && board_check[4] === "X" && board_check[5] === "X" ||
-//       board_check[6] === "X" && board_check[7] === "X" && board_check[8] === "X" ||
-//       board_check[1] === "X" && board_check[4] === "X" && board_check[7] === "X" ||
-//       board_check[2] === "X" && board_check[5] === "X" && board_check[8] === "X" ||
-//       board_check[2] === "X" && board_check[4] === "X" && board_check[6] === "X" ||
-//       board_check[0] === "X" && board_check[4] === "X" && board_check[8] === "X" ||
-//       board_check[0] === "X" && board_check[3] === "X" && board_check[6] === "X") {
-
-//   	alert("X wins!");
-//     resetboard();
-//   }
-
-//   if (board_check[0] === "O" && board_check[1] === "O" && board_check[2] === "O" ||
-//       board_check[3] === "O" && board_check[4] === "O" && board_check[5] === "O" ||
-//       board_check[6] === "O" && board_check[7] === "O" && board_check[8] === "O" ||
-//       board_check[1] === "O" && board_check[4] === "O" && board_check[7] === "O" ||
-//       board_check[2] === "O" && board_check[5] === "O" && board_check[8] === "O" ||
-//       board_check[2] === "O" && board_check[4] === "O" && board_check[6] === "O" ||
-//       board_check[0] === "O" && board_check[4] === "O" && board_check[8] === "O" ||
-//       board_check[0] === "O" && board_check[3] === "O" && board_check[6] === "O") {
-
-//     alert("O wins!");
-//     resetboard();
-//   }
-// }
-
-
-
-	// var hover_piece = document.getElementById('hover_row');
-	// var $hover_piece = $(hover_piece);
-
-
-	// $hover_piece.mouseover
-	// 	(function() {
-	// 		$(player1_Box).append($player1_Box); });
-
-
-	// 	$('#hover_row #col1').on('click',function(){
-	// 	$('tbody tr:nth-child(6) td:nth-child(1)')
-	// 	.css('backgroundColor','#1DF2FF').addClass('filled');
-	// 	playerTurn++;
-	// 	$('#hover_row #col1').on('click',function(){
-	// 	$('tbody tr:nth-child(6) td:nth-child(1)')
-	// 	.css('backgroundColor','#1DF2FF').addClass('filled');
-
-
-	// })});
-
-	// function player_drop() {
-	//   var $board_game = $('tbody tr td');
-	//   var $cell_count = $board_game.length;
-	//   var $column1 = $('#hover_row #col1')
-
-
-	//   $column1.on('click',function(){
-	//   	if (playerTurn %2 === 0) {
-	//  	  $board_game.eq($cell_count-7).css(blue).text("x")
-	 
-	//       playerTurn++;
-	//     } else {
-	//  	  $board_game.eq($cell_count-14).css(orange);
-	//   	  playerTurn--;
-	//     }
-	//   });
-	// }
-
-	// player_drop();
 
 	/* RENDER */
 	render = function() {
@@ -326,8 +256,8 @@ $(document).ready(function() {
 
 		  // for each column, loop over the cells/rows in the column
 		  for (var i = 0; i < board[columnName].length; i++) {
-		  	// console.log(columnName, i, " -> " + board[columnName][i]);
-
+		  	//console.log(columnName, i, " -> " + board[columnName][i]);
+		  	//console.log(board[columnName].length)
 		  	// get the value of the cell from the model
 		  	modelBox = board[columnName][i]
 		  	$domBox = $('[data-row="' + i + '"] td:nth-child(' + columnName.slice(-1) + ')');
