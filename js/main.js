@@ -16,7 +16,7 @@ var board      = {
 };
 var scoreP1    = 0;
 var scoreP2    = 0;
-
+var lastTurn = [];
 var blue   = {'backgroundColor':'rgb(29,242,255)','color':'rgb(29,242,255)'}
 var orange = {'backgroundColor': "#FF781D"}
 
@@ -104,31 +104,76 @@ function winRow (player) {
 
 // 			checkDiag(rowIndex,columnIndex)
 
-		 
-// 		}
-// 	}
-// 			// return false;
 
 
+ function winDiagonalblTr () {
 
-function winDiagonal (player) {
-if(board.column1[1] === player && board.column2[2] === player && board.column3[3] === player && board.column4[4] === player ||  
-   board.column2[2] === player && board.column3[3] === player && board.column4[4] === player && board.column5[5] === player ||  
-   board.column3[3] === player && board.column4[4] === player && board.column5[5] === player && board.column6[6] === player ||
+	var blTr = '';
+	var y = parseInt(lastTurn[0].slice(-1));
+	var x = parseInt(lastTurn[1]);
+	while(x < 6 && y > 0){
+		y--;
+		x++;
+	}
+	while(y < 8 && x > 0) {
+		if (board["column" + y][x] === null) {
+			blTr += " ____ ";
+		}
+		else {
+			blTr += board["column" + y][x];
+		}
+		y++;
+		x--;
+	}
+	if (blTr.indexOf('p1p1p1p1') > -1) {
+		return "p1 wins";
+	}
 
-   board.column1[2] === player && board.column2[3] === player && board.column3[4] === player && board.column4[5] === player 
+	else if (blTr.indexOf('p2p2p2p2') > -1){
+		return "p2 wins";
+	}
 
-
-
-   )	{
-	console.log("hello")
-} 
-
+	else {
+		return false;
+	}
 	
+ }
 
+ function winDiagonalbrTl (){	
+
+ 	var brTl = '';
+ 	var y = parseInt(lastTurn[0].slice(-1));
+	var x = parseInt(lastTurn[1]);
+	
+	while (x < 6 && y < 8){
+		
+		y++;
+		x++;
+	}
+
+	while (x > 0 && y > 0){
+	if (board["column" + y][x] === null) {
+		brTl += " ____ ";
+		}
+		else {
+			brTl += board["column" + y][x];
+		}
+
+			
+		y--;
+		x--;
+	}
+
+	if (brTl.indexOf('p1p1p1p1') > -1) {
+		return "p1 wins";
+	}
+
+	else if (brTl.indexOf('p2p2p2p2') > -1){
+		return "p2 wins";
+	}
+	
+	return false;
 }
-
-
 
 
 
@@ -203,12 +248,16 @@ $(document).ready(function() {
 		for (var i = 0; i < modelColumn.length ; i++) {
 			if (modelColumn[i] !== null) {
 				freeSpot = i - 1;
+				//console.log(modelColumn,)
+				lastTurn = [dropColumn,freeSpot];
 				//latestTurn = [dropColumn,freeSpot];
 				//console.log(latestTurn);
 			    break;
 			}
+				lastTurn = [dropColumn,freeSpot];
 		};
 
+		console.log(lastTurn);
 		console.log(freeSpot);
 
 		// check if column is full
@@ -258,7 +307,9 @@ $(document).ready(function() {
 		  for (var i = 0; i < board[columnName].length; i++) {
 		  	//console.log(columnName, i, " -> " + board[columnName][i]);
 		  	//console.log(board[columnName].length)
+		  	
 		  	// get the value of the cell from the model
+
 		  	modelBox = board[columnName][i]
 		  	$domBox = $('[data-row="' + i + '"] td:nth-child(' + columnName.slice(-1) + ')');
 		  	$domBox.addClass(modelBox);
