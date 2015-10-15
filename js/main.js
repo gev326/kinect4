@@ -26,33 +26,86 @@ var orange = {'backgroundColor': "#FF781D"}
 	//CHECK FOR COLUMN WIN!
 
 
-	function winClm () {
-	var currentColumn = board.column1;
+function winClm (player) {
 	var pieceCounter = 0;	 
 	//for (var j=0; j<6; j++)
-for (var j=0; j<7;j++)
-{
-	for(var i = 0; i <= board.column1.length-1; i++){
-		if(board['column' + (j+1)][i] === 'p1'){
+	for (var j=0; j<= 6;j++)
+	{
+		for(var i = 0; i <= board.column1.length-1; i++){
+			if(board['column' + (j+1)][i] === player){
 			pieceCounter +=1;
-			console.log(pieceCounter,board.column1[i],i);
-		}
+			//console.log(board.column[j],[i]);
+			}
 			else {
 				pieceCounter = 0;
-				console.log(pieceCounter,board.column1[i],i);
-				
-
+				//console.log(pieceCounter,board.column1[i],i);		
 			}
 
-		if (pieceCounter === 4) {
-			scoreP1++;
+			if (pieceCounter === 4) {
+			// MAKE SURE TO ADD SCORE BOARD! scoreP1++;
 			return true;
-		}
-	} 
-}
-return false;
+			}
+		} 
+	}
+			return false;
 
 }
+
+
+
+function winRow (player) {
+
+	var pieceCounterRow = 0;
+
+			for (var i = 6; i > 0; i--){
+				for (var j=0; j <= 6;j++){
+			console.log([j]);
+		if(board["column" + (j+1)][i] === player) 	{		
+			pieceCounterRow +=1;
+			}
+			else {
+				pieceCounterRow = 0;
+				//console.log(pieceCounter,board.column1[i],i);		
+			}
+
+			if (pieceCounterRow === 4) {
+			// MAKE SURE TO ADD SCORE BOARD! scoreP1++;
+			return true;
+			}
+		} 
+	}
+			return false;
+}
+
+
+
+// function winClmPlayer2 () {
+// 	var pieceCounter_2 = 0;	 
+// 	//for (var j=0; j<6; j++)
+// for (var j=0; j<= 7;j++)
+// {
+// 	for(var i = 0; i <= board.column1.length-1; i++){
+// 		if(board['column' + (j+1)][i] === 'p2'){
+// 			pieceCounter_2 +=1;
+// 			//console.log(pieceCounter,board.column1[i],i);
+// 		}
+// 			else {
+// 				pieceCounter_2 = 0;
+// 				//console.log(pieceCounter,board.column1[i],i);
+				
+
+// 			}
+
+// 		if (pieceCounter_2 === 4) {
+// 			scoreP2++;
+// 			return true;
+// 		}
+// 	} 
+// }
+// return false;
+
+//}
+
 
 
 // 	function winColumn () {
