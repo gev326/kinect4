@@ -1,4 +1,4 @@
-var development = true; // in development mode!
+//var development = true; // in development mode!
 
 /* MODEL */
 
@@ -196,7 +196,7 @@ $(document).ready(function() {
 	
 	/* SET UP GAME */
 	//var board = document.getElementById('board');
-	if (!development) {
+	//if (!development) {
 		var playerOne = prompt("Welcome to Kinect4! \nPlayer 1, Please enter your name:");
 
 		if (playerOne !=null) {
@@ -216,16 +216,16 @@ $(document).ready(function() {
 		var player2_Box = document.getElementById('player2');
 
 		var $player1_Box = $(player1_Box);
-			$player1_Box.html(playerOne + "\nScore: " + scoreP1).css({'text-align': 'center', 'font-weight': 'bold','font-size': '30px'});
+			$player1_Box.html(playerOne + "<br>" + "\nScore: " + scoreP1).css({'text-align': 'center', 'font-weight': 'bold','font-size': '30px'});
 			
 
 
 		var $player2_Box = $(player2_Box);
-			$player2_Box.html(playerTwo + "\nScore: " + scoreP2).css({'text-align': 'center', 'font-weight': 'bold','font-size': '30px'});
-	} else {
-	playerOne = 'Gev';
-	playerTwo = 'Veg';
-	 }
+			$player2_Box.html(playerTwo + "<br>"+ "\nScore: " + scoreP2).css({'text-align': 'center', 'font-weight': 'bold','font-size': '30px'});
+	//} else {
+	//playerOne = 'Gev';
+	//playerTwo = 'Veg';
+	//  }
 	///////////////
 
 

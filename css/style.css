@@ -1,18 +1,21 @@
 
 body, html {
-	font-family: 'Monda', sans-serif;
-	background-color: gray;
+	font-family: 'PT Sans Narrow', sans-serif;
+	background-color: #BFBBBB;
 	height: 100%;
 }
 
 h1 {
-	color:green;
+	color:#C91B47;
 	text-align: center;
 	padding-top: 50px;
 }
 
 p {
 	text-align: center;
+	color:#C91B47;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 #game {
@@ -23,8 +26,9 @@ p {
 	
 }
 .box {
-	/*border-bottom: 2px solid blue;*/
-	border: 1px solid blue;
+	border-radius: 20px;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
 	color: blue;
 	text-align: center;
 	height: 80px;
@@ -53,13 +57,9 @@ p {
 
 tr {
 	padding-top: 20px;
-	/*margin: 0 auto;*/
 }
 
-/*#row1 
-{
-	background-color: red;
-}*/
+
 
 #board {
 	margin: 0 auto;
@@ -80,6 +80,7 @@ tr {
 	border-radius: 20px;
 	margin-top:200px;
 	margin-left:20px;
+	padding-top: 20px;
 	
 	
 }
@@ -94,6 +95,7 @@ tr {
 	border-radius: 20px;
 	margin-top:200px;
 	margin-right:20px;
+	padding-top: 20px;
 	
 
 	
