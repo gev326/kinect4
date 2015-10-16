@@ -26,7 +26,8 @@ The game seems basic and straight forward but on a user's perspective there is s
 5. [x] Player, should be able to win Diagonally 
 6. [x] Player should know clear instructions and rules on how 
    game is played and how game is won.
-7. [ ] Player should be notified of win or loss.
+7. [x] Player should be notified of win or loss.
+8. [x] Players should be able to reset the board.
 
 ### ICEBOX
 

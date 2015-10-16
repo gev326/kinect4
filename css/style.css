@@ -18,6 +18,14 @@ p {
 	font-weight: bold;
 }
 
+#reset {
+	position: relative;
+	margin: 0 auto;
+	bottom: 10px;
+	margin-left: 48%;
+
+}
+
 #game {
 
 	width: 100%;
