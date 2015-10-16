@@ -16,27 +16,31 @@ var board      = {
 };
 var scoreP1    = 0;
 var scoreP2    = 0;
-var lastTurn = [];
-var blue   = {'backgroundColor':'rgb(29,242,255)','color':'rgb(29,242,255)'}
-var orange = {'backgroundColor': "#FF781D"}
+var lastTurn   = [];
+var blue       = {'backgroundColor':'rgb(29,242,255)','color':'rgb(29,242,255)'}
+var orange     = {'backgroundColor': "#FF781D"}
 
 
 
 
-	//CHECK FOR COLUMN WIN!
+	//CHECK FOR COLUMN WIN
 
 
 function winClm (player) {
+
 	var pieceCounter = 0;	 
 	//for (var j=0; j<6; j++)
-	for (var j=0; j<= 6;j++)
-	{
+	for (var j=0; j<= 6;j++){
+
 		for(var i = 0; i <= 6; i++){
-			if(board['column' + (j+1)][i] === player){
-			pieceCounter +=1;
+			
+		if(board['column' + (j+1)][i] === player){
+		
+		pieceCounter +=1;
 			//console.log(board.column[j],[i]);
-			}
-			else {
+		}
+			
+			else{
 				pieceCounter = 0;
 				//console.log(pieceCounter,board.column1[i],i);		
 			}
@@ -46,24 +50,30 @@ function winClm (player) {
 			return true;
 			//
 			}
+		
 		} 
+	
 	}
-			return false;
+		return false;
 
 }
 
-
+	// CHECK FOR ROW WIN
 
 function winRow (player) {
 
 	var pieceCounterRow = 0;
 
-			for (var i = 6; i > 0; i--){
-				for (var j=0; j <= 6;j++){
+	for (var i = 6; i > 0; i--){
+
+		for (var j=0; j <= 6;j++){
 			//console.log([j]);
-		if(board["column" + (j+1)][i] === player) 	{		
+		if(board["column" + (j+1)][i] === player) {		
+			
 			pieceCounterRow +=1;
-			}
+			
+		}
+			
 			else {
 				pieceCounterRow = 0;
 				//console.log(pieceCounter,board.column1[i],i);		
@@ -81,94 +91,80 @@ function winRow (player) {
 
 
 
+	// CHECK FOR DIAGONAL WIN - BOTTOM LEFT TO TOP RIGHT AXIS
 
-// function checkDiag (row,column) {
+ function winDiagonalBottomLeftTopRight () {
 
-// 	//var columnId = "column" + column;
-// 	console.log(board[column][row]);
-
-
-// 	parseInt(column[-1]) 
-
-// 	if([column+1][row-1] === 'p1' && [column+1])
-
-// }
-
-
-
-
-
-// for (columnIndex in board){
-	
-// 		for(var rowIndex = 6; rowIndex >= 0; rowIndex--){
-
-// 			checkDiag(rowIndex,columnIndex)
-
-
-
- function winDiagonalblTr () {
-
-	var blTr = '';
+	var BottomLeftTopRight = '';
 	var y = parseInt(lastTurn[0].slice(-1));
 	var x = parseInt(lastTurn[1]);
+	
 	while(x < 6 && y > 0){
+	
 		y--;
 		x++;
+
 	}
+
 	while(y < 8 && x > 0) {
+		
 		if (board["column" + y][x] === null) {
-			blTr += " ____ ";
+			BottomLeftTopRight += " ____ ";
 		}
+		
 		else {
-			blTr += board["column" + y][x];
+			BottomLeftTopRight += board["column" + y][x];
 		}
+		
 		y++;
 		x--;
+		console.log(x,y,lastTurn);
 	}
-	if (blTr.indexOf('p1p1p1p1') > -1) {
+	
+		if (BottomLeftTopRight.indexOf('p1p1p1p1') > -1) {
 		return "p1 wins";
-	}
+		}
 
-	else if (blTr.indexOf('p2p2p2p2') > -1){
+		else if (BottomLeftTopRight.indexOf('p2p2p2p2') > -1){
 		return "p2 wins";
-	}
+		}
 
-	else {
+		else {
 		return false;
-	}
+		}
 	
  }
 
- function winDiagonalbrTl (){	
+ // CHECK FOR DIAGONAL WIN - BOTTOM RIGHT TO TOP LEFT AXIS
 
- 	var brTl = '';
+ function winDiagonalBottomRightTopLeft (){	
+
+ 	var BottomRightTopLeft = '';
  	var y = parseInt(lastTurn[0].slice(-1));
 	var x = parseInt(lastTurn[1]);
 	
 	while (x < 6 && y < 8){
-		
+		if (board["column" + y][x] === null) {
+		BottomRightTopLeft += " ____ ";
+		}
+		else {
+			BottomRightTopLeft += board["column" + y][x];
+		}
 		y++;
 		x++;
 	}
 
-	while (x > 0 && y > 0){
-	if (board["column" + y][x] === null) {
-		brTl += " ____ ";
-		}
-		else {
-			brTl += board["column" + y][x];
-		}
-
+	while (x > 0 && y > 0){ 	
 			
 		y--;
 		x--;
 	}
 
-	if (brTl.indexOf('p1p1p1p1') > -1) {
+	if (BottomRightTopLeft.indexOf('p1p1p1p1') > -1) {
 		return "p1 wins";
 	}
 
-	else if (brTl.indexOf('p2p2p2p2') > -1){
+	else if (BottomRightTopLeft.indexOf('p2p2p2p2') > -1){
 		return "p2 wins";
 	}
 	
@@ -176,7 +172,19 @@ function winRow (player) {
 }
 
 
+	// CHECK HOW PLAYER WON
 
+function getWinner () {
+
+
+
+
+
+
+
+
+
+}	
 
 
 /* ENSURE DOM LOADED */
