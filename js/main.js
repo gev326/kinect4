@@ -1,4 +1,4 @@
-//var development = true; // in development mode!
+var development = true; // in development mode!
 
 /* MODEL */
 
@@ -98,13 +98,14 @@ function winRow (player) {
 	var BottomLeftTopRight = '';
 	var y = parseInt(lastTurn[0].slice(-1));
 	var x = parseInt(lastTurn[1]);
+	console.log(x,y)
+	while(x < 6 && y > 1){
 	
-	while(x < 6 && y > 0){
-	
-		y--;
-		x++;
+		y = y-1;
+		x = x+1;
 
 	}
+	console.log(x,y);
 
 	while(y < 8 && x > 0) {
 		
@@ -116,17 +117,17 @@ function winRow (player) {
 			BottomLeftTopRight += board["column" + y][x];
 		}
 		
-		y++;
-		x--;
+		y=y+1;
+		x=x-1;
 		console.log(x,y,lastTurn);
 	}
-	
+	console.log(BottomLeftTopRight);
 		if (BottomLeftTopRight.indexOf('p1p1p1p1') > -1) {
-		return "p1 wins";
+			return "p1 wins";
 		}
 
 		else if (BottomLeftTopRight.indexOf('p2p2p2p2') > -1){
-		return "p2 wins";
+			return "p2 wins";
 		}
 
 		else {
@@ -142,24 +143,25 @@ function winRow (player) {
  	var BottomRightTopLeft = '';
  	var y = parseInt(lastTurn[0].slice(-1));
 	var x = parseInt(lastTurn[1]);
-	
+	console.log(x,y);
+	while (x > 1 && y > 1){ 	
+			
+		y= y-1;
+		x= x-1;
+	}
+	console.log(x,y);
 	while (x < 6 && y < 8){
 		if (board["column" + y][x] === null) {
-		BottomRightTopLeft += " ____ ";
+			BottomRightTopLeft += " ____ ";
 		}
 		else {
 			BottomRightTopLeft += board["column" + y][x];
 		}
-		y++;
-		x++;
+		y=y+1;
+		x=x+1;
 	}
-
-	while (x > 0 && y > 0){ 	
-			
-		y--;
-		x--;
-	}
-
+	console.log(x,y, BottomRightTopLeft);
+	
 	if (BottomRightTopLeft.indexOf('p1p1p1p1') > -1) {
 		return "p1 wins";
 	}
@@ -167,8 +169,9 @@ function winRow (player) {
 	else if (BottomRightTopLeft.indexOf('p2p2p2p2') > -1){
 		return "p2 wins";
 	}
-	
+	else{
 	return false;
+	}
 }
 
 
@@ -196,7 +199,7 @@ $(document).ready(function() {
 	
 	/* SET UP GAME */
 	//var board = document.getElementById('board');
-	//if (!development) {
+	if (!development) {
 		var playerOne = prompt("Welcome to Kinect4! \nPlayer 1, Please enter your name:");
 
 		if (playerOne !=null) {
@@ -222,10 +225,10 @@ $(document).ready(function() {
 
 		var $player2_Box = $(player2_Box);
 			$player2_Box.html(playerTwo + "<br>"+ "\nScore: " + scoreP2).css({'text-align': 'center', 'font-weight': 'bold','font-size': '30px'});
-	//} else {
-	//playerOne = 'Gev';
-	//playerTwo = 'Veg';
-	//  }
+	} else {
+	playerOne = 'Gev';
+	playerTwo = 'Veg';
+	}
 	///////////////
 
 

@@ -1,19 +1,19 @@
 
 body, html {
 	font-family: 'PT Sans Narrow', sans-serif;
-	background-color: #BFBBBB;
+	background-color: #67676B;
 	height: 100%;
 }
 
 h1 {
-	color:#C91B47;
+	color:#64C2B0;
 	text-align: center;
 	padding-top: 50px;
 }
 
 p {
 	text-align: center;
-	color:#C91B47;
+	color:#64C2B0;
 	font-size: 18px;
 	font-weight: bold;
 }
@@ -80,7 +80,8 @@ tr {
 	border-radius: 20px;
 	margin-top:200px;
 	margin-left:20px;
-	padding-top: 20px;
+	padding-top: 30px;
+	color: #545557;
 	
 	
 }
@@ -95,8 +96,8 @@ tr {
 	border-radius: 20px;
 	margin-top:200px;
 	margin-right:20px;
-	padding-top: 20px;
-	
+	padding-top: 30px;
+	color: #545557;
 
 	
 }

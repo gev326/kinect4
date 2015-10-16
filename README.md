@@ -14,7 +14,7 @@ The game seems basic and straight forward but on a user's perspective there is s
 
 ### User Stories
 
-1. [x] As a player, they want to enter their name and see their color.
+1. [x] As a player, they want to enter their name and see their piece color.
   
 2. [x] The player, should have an outline or pointer as to what 
    column/row their piece will go into once click on an
