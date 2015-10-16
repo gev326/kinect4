@@ -1,4 +1,4 @@
-var development = true; // in development mode!
+
 
 /* MODEL */
 
@@ -17,8 +17,7 @@ var board      = {
 var scoreP1    = 0;
 var scoreP2    = 0;
 var lastTurn   = [];
-var blue       = {'backgroundColor':'rgb(29,242,255)','color':'rgb(29,242,255)'}
-var orange     = {'backgroundColor': "#FF781D"}
+
 
 
 
@@ -26,29 +25,30 @@ var orange     = {'backgroundColor': "#FF781D"}
 	//CHECK FOR COLUMN WIN
 
 
-function winClm (player) {
+function winClmPlayer1 () {
 
 	var pieceCounter = 0;	 
-	//for (var j=0; j<6; j++)
+
 	for (var j=0; j<= 6;j++){
 
 		for(var i = 0; i <= 6; i++){
 			
-		if(board['column' + (j+1)][i] === player){
+		if(board['column' + (j+1)][i] === 'p1'){
 		
 		pieceCounter +=1;
-			//console.log(board.column[j],[i]);
+			
 		}
 			
 			else{
 				pieceCounter = 0;
-				//console.log(pieceCounter,board.column1[i],i);		
+			
 			}
 
 			if (pieceCounter === 4) {
-			// MAKE SURE TO ADD SCORE BOARD! scoreP1++;
-			return true;
-			//
+			scoreP1++;
+			return alert("You Win!");
+			
+				
 			}
 		
 		} 
@@ -56,19 +56,55 @@ function winClm (player) {
 	}
 		return false;
 
+
+}
+
+
+function winClmPlayer2 () {
+
+	var pieceCounter = 0;	 
+	
+	for (var j=0; j<= 6;j++){
+
+		for(var i = 0; i <= 6; i++){
+			
+		if(board['column' + (j+1)][i] === 'p2'){
+		
+		pieceCounter +=1;
+			
+		}
+			
+			else{
+				pieceCounter = 0;
+					
+			}
+
+			if (pieceCounter === 4) {
+			return alert('YOU WIN!');
+			scoreP2++;
+			
+				
+			}
+		
+		} 
+	
+	}
+		return false;
+
+
 }
 
 	// CHECK FOR ROW WIN
 
-function winRow (player) {
+function winRowPlayer1 () {
 
 	var pieceCounterRow = 0;
 
 	for (var i = 6; i > 0; i--){
 
 		for (var j=0; j <= 6;j++){
-			//console.log([j]);
-		if(board["column" + (j+1)][i] === player) {		
+			 
+		if(board["column" + (j+1)][i] === 'p1') {		
 			
 			pieceCounterRow +=1;
 			
@@ -76,13 +112,16 @@ function winRow (player) {
 			
 			else {
 				pieceCounterRow = 0;
-				//console.log(pieceCounter,board.column1[i],i);		
+					
 			}
 
 			if (pieceCounterRow === 4) {
-			// MAKE SURE TO ADD SCORE BOARD! scoreP1++;
-			return true;
-			//alert("YOU WIN!")
+
+			
+			// MAKE SURE TO ADD SCORE BOARD!
+			return alert('YOU WIN!');
+			
+			
 			}
 		} 
 	}
@@ -90,21 +129,53 @@ function winRow (player) {
 }
 
 
+function winRowPlayer2 () {
+
+	var pieceCounterRow = 0;
+
+	for (var i = 6; i > 0; i--){
+
+		for (var j=0; j <= 6;j++){
+			
+		if(board["column" + (j+1)][i] === 'p2') {		
+			
+			pieceCounterRow +=1;
+			
+		}
+			
+			else {
+				pieceCounterRow = 0;
+					
+			}
+
+			if (pieceCounterRow === 4) {
+
+			
+			// MAKE SURE TO ADD SCORE BOARD!
+			return alert('YOU WIN!');
+			
+			
+			}
+		} 
+	}
+			return false;
+}
 
 	// CHECK FOR DIAGONAL WIN - BOTTOM LEFT TO TOP RIGHT AXIS
 
- function winDiagonalBottomLeftTopRight () {
+function winDiagonalBottomLeftTopRight () {
 
 	var BottomLeftTopRight = '';
 	var y = parseInt(lastTurn[0].slice(-1));
 	var x = parseInt(lastTurn[1]);
 	
-	while(x < 6 && y > 0){
+	while(x < 6 && y > 1){
 	
-		y--;
-		x++;
+		y = y-1;
+		x = x+1;
 
 	}
+	
 
 	while(y < 8 && x > 0) {
 		
@@ -116,75 +187,68 @@ function winRow (player) {
 			BottomLeftTopRight += board["column" + y][x];
 		}
 		
-		y++;
-		x--;
-		console.log(x,y,lastTurn);
+		y=y+1;
+		x=x-1;
+		
 	}
 	
 		if (BottomLeftTopRight.indexOf('p1p1p1p1') > -1) {
-		return "p1 wins";
+			return alert("YOU WIN!");
 		}
 
 		else if (BottomLeftTopRight.indexOf('p2p2p2p2') > -1){
-		return "p2 wins";
+			return alert("YOU WIN!");
 		}
 
 		else {
-		return false;
+		
+			return false;
+		
 		}
 	
  }
 
  // CHECK FOR DIAGONAL WIN - BOTTOM RIGHT TO TOP LEFT AXIS
 
- function winDiagonalBottomRightTopLeft (){	
+function winDiagonalBottomRightTopLeft (){	
 
  	var BottomRightTopLeft = '';
  	var y = parseInt(lastTurn[0].slice(-1));
 	var x = parseInt(lastTurn[1]);
+
+	while (x > 1 && y > 1){ 	
+			
+		y= y-1;
+		x= x-1;
+	}
 	
 	while (x < 6 && y < 8){
 		if (board["column" + y][x] === null) {
-		BottomRightTopLeft += " ____ ";
+			BottomRightTopLeft += " ____ ";
 		}
 		else {
 			BottomRightTopLeft += board["column" + y][x];
 		}
-		y++;
-		x++;
+		y=y+1;
+		x=x+1;
 	}
-
-	while (x > 0 && y > 0){ 	
-			
-		y--;
-		x--;
-	}
-
+	
+	
 	if (BottomRightTopLeft.indexOf('p1p1p1p1') > -1) {
-		return "p1 wins";
+		return alert("YOU WIN!");
 	}
 
 	else if (BottomRightTopLeft.indexOf('p2p2p2p2') > -1){
-		return "p2 wins";
+		return alert("YOU WIN!");
 	}
-	
+
+	else{
+
 	return false;
+	
+	}
 }
 
-
-	// CHECK HOW PLAYER WON
-
-function getWinner () {
-
-
-
-
-
-
-
-
-
-}	
 
 
 /* ENSURE DOM LOADED */
@@ -195,13 +259,10 @@ $(document).ready(function() {
 	$droppableBoxes = $('.drop');
 	
 	/* SET UP GAME */
-	//var board = document.getElementById('board');
-	if (!development) {
 		var playerOne = prompt("Welcome to Kinect4! \nPlayer 1, Please enter your name:");
 
 		if (playerOne !=null) {
 			playerOne === playerOne;
-			console.log(playerOne);
 			players++;
 		}
 
@@ -209,24 +270,19 @@ $(document).ready(function() {
 			
 		if (playerTwo !=null) {
 		    playerTwo === playerTwo
-			console.log(playerTwo)
 		}
 
 		var player1_Box = document.getElementById('player1');
 		var player2_Box = document.getElementById('player2');
 
 		var $player1_Box = $(player1_Box);
-			$player1_Box.html(playerOne + "\nScore: " + scoreP1).css({'text-align': 'center', 'font-weight': 'bold','font-size': '30px'});
+			$player1_Box.html(playerOne + "<br>" + "\nScore: " + scoreP1).css({'text-align': 'center', 'font-weight': 'bold','font-size': '30px'});
 			
 
 
 		var $player2_Box = $(player2_Box);
-			$player2_Box.html(playerTwo + "\nScore: " + scoreP2).css({'text-align': 'center', 'font-weight': 'bold','font-size': '30px'});
-	} else {
-	playerOne = 'Gev';
-	playerTwo = 'Veg';
-	 }
-	///////////////
+			$player2_Box.html(playerTwo + "<br>"+ "\nScore: " + scoreP2).css({'text-align': 'center', 'font-weight': 'bold','font-size': '30px'});
+	
 
 
 
@@ -241,7 +297,6 @@ $(document).ready(function() {
 			currentPlayersName = playerTwo;
 		}
 
-		console.log('Hi ' + currentPlayersName + '!');
 
 		// drop a box
 		// x get the column to drop in
@@ -256,21 +311,19 @@ $(document).ready(function() {
 		for (var i = 0; i < modelColumn.length ; i++) {
 			if (modelColumn[i] !== null) {
 				freeSpot = i - 1;
-				//console.log(modelColumn,)
+				
 				lastTurn = [dropColumn,freeSpot];
-				//latestTurn = [dropColumn,freeSpot];
-				//console.log(latestTurn);
+	
 			    break;
 			}
 				lastTurn = [dropColumn,freeSpot];
-		};
+		}
 
-		console.log(lastTurn);
-		console.log(freeSpot);
+	
 
 		// check if column is full
 		if (freeSpot === 0) {
-			// TODO: DO SOMETHING!
+			
 			alert("column is full!")
 		} else {
 			modelColumn[freeSpot] = "p" + playerTurn;
@@ -282,16 +335,19 @@ $(document).ready(function() {
 		} else {
 			playerTurn = 1;
 		}
-
 		// re-render!
-		//winClm();
-		//winRow();
 		render();
-		
+		winClmPlayer1();
+		winClmPlayer2();
+		winRowPlayer1();
+		winRowPlayer2();
+		winDiagonalBottomRightTopLeft();
+		winDiagonalBottomLeftTopRight();
 	});
 
 
-
+	
+	
 	/* RENDER */
 	render = function() {
 		// correctly display hover colors by player
@@ -313,8 +369,7 @@ $(document).ready(function() {
 
 		  // for each column, loop over the cells/rows in the column
 		  for (var i = 0; i < board[columnName].length; i++) {
-		  	//console.log(columnName, i, " -> " + board[columnName][i]);
-		  	//console.log(board[columnName].length)
+		  	
 		  	
 		  	// get the value of the cell from the model
 
@@ -325,12 +380,10 @@ $(document).ready(function() {
 		  };
 		}
 	};
-
 	/* NOW INITIALIZE THE PAGE */
 	render();
 });
 
 
-	
 
 
