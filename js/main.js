@@ -17,8 +17,7 @@ var board      = {
 var scoreP1    = 0;
 var scoreP2    = 0;
 var lastTurn   = [];
-var blue       = {'backgroundColor':'rgb(29,242,255)','color':'rgb(29,242,255)'}
-var orange     = {'backgroundColor': "#FF781D"}
+
 
 
 
@@ -194,11 +193,11 @@ function winDiagonalBottomLeftTopRight () {
 	}
 	
 		if (BottomLeftTopRight.indexOf('p1p1p1p1') > -1) {
-			return alert("p1 wins");
+			return alert("YOU WIN!");
 		}
 
 		else if (BottomLeftTopRight.indexOf('p2p2p2p2') > -1){
-			return alert("p2 wins");
+			return alert("YOU WIN!");
 		}
 
 		else {
