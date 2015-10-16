@@ -1,4 +1,4 @@
-var development = true; // in development mode!
+//var development = true; // in development mode!
 
 /* MODEL */
 
@@ -48,13 +48,15 @@ function winClm (player) {
 			if (pieceCounter === 4) {
 			// MAKE SURE TO ADD SCORE BOARD! scoreP1++;
 			return true;
-			//
+			
+				
 			}
 		
 		} 
 	
 	}
 		return false;
+
 
 }
 
@@ -80,15 +82,16 @@ function winRow (player) {
 			}
 
 			if (pieceCounterRow === 4) {
-			// MAKE SURE TO ADD SCORE BOARD! scoreP1++;
+			
+			// MAKE SURE TO ADD SCORE BOARD!
 			return true;
-			//alert("YOU WIN!")
+			
+			
 			}
 		} 
 	}
 			return false;
 }
-
 
 
 	// CHECK FOR DIAGONAL WIN - BOTTOM LEFT TO TOP RIGHT AXIS
@@ -179,16 +182,17 @@ function winRow (player) {
 
 function getWinner () {
 
-
-
-
-
-
-
+ if(winClm || winRow || winDiagonalBottomRightTopLeft || winDiagonalBottomLeftTopRight){
+ 	alert("you Win!");
+ }
 
 
 }	
 
+
+function reset () {
+	
+}
 
 /* ENSURE DOM LOADED */
 $(document).ready(function() {
@@ -199,7 +203,7 @@ $(document).ready(function() {
 	
 	/* SET UP GAME */
 	//var board = document.getElementById('board');
-	if (!development) {
+	//if (!development) {
 		var playerOne = prompt("Welcome to Kinect4! \nPlayer 1, Please enter your name:");
 
 		if (playerOne !=null) {
@@ -225,10 +229,10 @@ $(document).ready(function() {
 
 		var $player2_Box = $(player2_Box);
 			$player2_Box.html(playerTwo + "<br>"+ "\nScore: " + scoreP2).css({'text-align': 'center', 'font-weight': 'bold','font-size': '30px'});
-	} else {
-	playerOne = 'Gev';
-	playerTwo = 'Veg';
-	}
+	//} else {
+	//playerOne = 'Gev';
+	//playerTwo = 'Veg';
+	//}
 	///////////////
 
 
@@ -244,7 +248,7 @@ $(document).ready(function() {
 			currentPlayersName = playerTwo;
 		}
 
-		console.log('Hi ' + currentPlayersName + '!');
+		//console.log('Hi ' + currentPlayersName + '!');
 
 		// drop a box
 		// x get the column to drop in
@@ -268,8 +272,8 @@ $(document).ready(function() {
 				lastTurn = [dropColumn,freeSpot];
 		};
 
-		console.log(lastTurn);
-		console.log(freeSpot);
+		//console.log(lastTurn);
+		//console.log(freeSpot);
 
 		// check if column is full
 		if (freeSpot === 0) {
@@ -285,16 +289,14 @@ $(document).ready(function() {
 		} else {
 			playerTurn = 1;
 		}
-
 		// re-render!
-		//winClm();
-		//winRow();
 		render();
 		
 	});
 
 
-
+	
+	
 	/* RENDER */
 	render = function() {
 		// correctly display hover colors by player
@@ -328,12 +330,11 @@ $(document).ready(function() {
 		  };
 		}
 	};
-
 	/* NOW INITIALIZE THE PAGE */
+	
 	render();
 });
 
 
-	
 
 

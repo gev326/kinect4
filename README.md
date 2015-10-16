@@ -23,14 +23,14 @@ The game seems basic and straight forward but on a user's perspective there is s
    they click on the top row.
 4. [x] When a column is full and the player clicks to drop a piece 
    into it, it alerts the user that the row is full.
-5. [x] The player will want a score board to indicate the score 
-   with whom they are playing against.
+5. [x] Player, should be able to win Diagonally 
 6. [x] Player should know clear instructions and rules on how 
    game is played and how game is won.
 7. [ ] Player should be notified of win or loss.
 
 ### ICEBOX
 
-1. [ ] Player, should be able to win Diagonally
+1. [ ] The player will want a score board to indicate the score 
+   with whom they are playing against.
 
 ![Framework of Kinect4!](https://i.imgur.com/tdp1uJw.png)
